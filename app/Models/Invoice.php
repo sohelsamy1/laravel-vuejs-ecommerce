@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use App\Models\User;
+use App\Models\InvoiceProduct;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -27,5 +28,9 @@ class Invoice extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function products()
+    {
+        return $this->hasMany(InvoiceProduct::class);
+    }
 }
 
