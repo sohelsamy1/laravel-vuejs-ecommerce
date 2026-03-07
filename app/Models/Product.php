@@ -42,4 +42,9 @@ class Product extends Model
         return $this->hasOne(ProductDetails::class);
     }
 
+    public function slider(): HasOne
+    {
+        return $this->hasOne(ProductSlider::class);
+    }
+
 }
