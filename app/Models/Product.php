@@ -2,13 +2,18 @@
 
 namespace App\Models;
 
-use App\Models\Brand;
-use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+use App\Models\Category;
+use App\Models\Brand;
+use App\Models\ProductDetails;
+use App\Models\ProductSlider;
+use App\Models\ProductReview;
 
 class Product extends Model
 {
