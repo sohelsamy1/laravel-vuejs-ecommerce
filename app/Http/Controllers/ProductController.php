@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\ResponseHelper;
 use App\Models\Product;
+use App\Models\ProductDetails;
 use App\Models\ProductSlider;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -16,7 +17,6 @@ class ProductController extends Controller
         $data = Product::where('category_id', $request->id)->with('brand', 'category')->get();
         return ResponseHelper::Out('success', $data, 200);
     }
-
 
     public function ListProductByBrand(Request $request): JsonResponse
     {
@@ -33,6 +33,15 @@ class ProductController extends Controller
     public function ListProductSlider(): JsonResponse
     {
         $data = ProductSlider::all();
+        return ResponseHelper::Out('success', $data, 200);
+    }
+
+    public function ProductDetailsById(Request $request): JsonResponse
+    {
+        $data = ProductDetails::where('product_id', $request->id)
+            ->with('product', 'product.brand', 'product.category')
+            ->get();
+
         return ResponseHelper::Out('success', $data, 200);
     }
 }
