@@ -19,3 +19,4 @@ Route::get('/CategoryList', [CategoryController::class, 'CategoryList']);
 
 // Product
 Route::get('/ListProductByCategory/{id}', [ProductController::class, 'ListProductByCategory']);
+Route::get('/ListProductByBrand/{id}', [ProductController::class, 'ListProductByBrand']);
