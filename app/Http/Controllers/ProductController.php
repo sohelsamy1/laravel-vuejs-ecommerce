@@ -16,10 +16,16 @@ class ProductController extends Controller
         return ResponseHelper::Out('success', $data, 200);
     }
 
-    
+
     public function ListProductByBrand(Request $request): JsonResponse
     {
         $data = Product::where('brand_id', $request->id)->with('brand', 'category')->get();
+        return ResponseHelper::Out('success', $data, 200);
+    }
+
+    public function ListProductByRemark(Request $request): JsonResponse
+    {
+        $data = Product::where('remark', $request->remark)->with('brand', 'category')->get();
         return ResponseHelper::Out('success', $data, 200);
     }
 }
