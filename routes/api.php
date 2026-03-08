@@ -21,3 +21,4 @@ Route::get('/CategoryList', [CategoryController::class, 'CategoryList']);
 Route::get('/ListProductByCategory/{id}', [ProductController::class, 'ListProductByCategory']);
 Route::get('/ListProductByBrand/{id}', [ProductController::class, 'ListProductByBrand']);
 Route::get('/ListProductByRemark/{remark}', [ProductController::class, 'ListProductByRemark']);
+Route::get('/ListProductSlider', [ProductController::class, 'ListProductSlider']);
