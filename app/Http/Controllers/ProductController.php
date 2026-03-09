@@ -77,4 +77,16 @@ class ProductController extends Controller
         $data = ProductWish::where('user_id', $user_id)->with('product')->get();
         return ResponseHelper::Out('success', $data, 200);
     }
+
+    //  Protected: Remove Wish
+    public function RemoveWishList(Request $request): JsonResponse
+    {
+        $user_id = (int) $request->input('user_id');
+        $data = ProductWish::where([
+            'user_id' => $user_id,
+            'product_id' => $request->product_id
+        ])->delete();
+
+        return ResponseHelper::Out('success', $data, 200);
+    }
 }
