@@ -37,5 +37,7 @@ Route::middleware(['token.auth'])->group(function () {
     // Auth
     Route::post('/logout', [UserController::class, 'UserLogout']);
 
-    
+    // Wishlist
+    Route::get('/CreateWishList/{product_id}', [ProductController::class, 'CreateWishList']);
+
 });
