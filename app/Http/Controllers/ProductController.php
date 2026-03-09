@@ -143,4 +143,15 @@ class ProductController extends Controller
         $data = ProductCart::where('user_id', $user_id)->with('product')->get();
         return ResponseHelper::Out('success', $data, 200);
     }
+
+    // Protected: Delete Cart
+    public function DeleteCartList(Request $request, $product_id): JsonResponse
+    {
+        $user_id = (int) $request->input('user_id');
+        $data = ProductCart::where('user_id', $user_id)
+            ->where('product_id', $product_id)
+            ->delete();
+
+        return ResponseHelper::Out('success', $data, 200);
+    }
 }
