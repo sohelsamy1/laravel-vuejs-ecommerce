@@ -44,5 +44,7 @@ Route::middleware(['token.auth'])->group(function () {
 
     // Cart
     Route::post('/CreateCartList', [ProductController::class, 'CreateCartList']);
+    Route::get('/CartList', [ProductController::class, 'CartList']);
+    
 
 });

@@ -135,4 +135,12 @@ class ProductController extends Controller
 
         return ResponseHelper::Out('success', $data, 200);
     }
+
+    // Protected: Cart List
+    public function CartList(Request $request): JsonResponse
+    {
+        $user_id = (int) $request->input('user_id');
+        $data = ProductCart::where('user_id', $user_id)->with('product')->get();
+        return ResponseHelper::Out('success', $data, 200);
+    }
 }
