@@ -3,6 +3,7 @@
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,6 @@ Route::get('/ListProductByRemark/{remark}', [ProductController::class, 'ListProd
 Route::get('/ListProductSlider', [ProductController::class, 'ListProductSlider']);
 Route::get('/ProductDetailsById/{id}', [ProductController::class, 'ProductDetailsById']);
 Route::get('/ListReviewByProduct/{product_id}', [ProductController::class, 'ListReviewByProduct']);
+
+// Auth
+Route::post('/UserLogin', [UserController::class, 'UserLogin']);
