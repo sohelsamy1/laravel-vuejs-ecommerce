@@ -28,3 +28,4 @@ Route::get('/ListReviewByProduct/{product_id}', [ProductController::class, 'List
 
 // Auth
 Route::post('/UserLogin', [UserController::class, 'UserLogin']);
+Route::post('/VerifyLogin', [UserController::class, 'VerifyLogin']);

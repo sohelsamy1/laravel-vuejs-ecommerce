@@ -12,7 +12,7 @@
         <hr style="border:none;border-top:1px solid #eee" />
         <div style="float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300">
             <p>My Ecommerce Inc</p>
-            <p>1236 Jatrabri Dhaka</p>
+            <p>1236 Jatrabri</p>
             <p>Dhaka</p>
         </div>
     </div>
