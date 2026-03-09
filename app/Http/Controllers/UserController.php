@@ -113,4 +113,14 @@ class UserController extends Controller
             ], 500);
         }
     }
+
+    public function UserLogout(): JsonResponse
+    {
+        return response()
+            ->json([
+                'msg' => 'success',
+                'data' => 'Logged out',
+            ], 200)
+            ->cookie('token', '', -1);
+    }
 }
