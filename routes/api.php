@@ -29,4 +29,13 @@ Route::get('/ListReviewByProduct/{product_id}', [ProductController::class, 'List
 // Auth
 Route::post('/UserLogin', [UserController::class, 'UserLogin']);
 Route::post('/VerifyLogin', [UserController::class, 'VerifyLogin']);
-Route::post('/logout', [UserController::class, 'UserLogout']);
+
+
+// -------------------- Protected Routes --------------------
+Route::middleware(['token.auth'])->group(function () {
+
+    // Auth
+    Route::post('/logout', [UserController::class, 'UserLogout']);
+
+    
+});
