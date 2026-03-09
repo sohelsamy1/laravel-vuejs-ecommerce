@@ -8,7 +8,7 @@ use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-
+use App\Helper\JWTToken;
 
 class UserController extends Controller
 {
