@@ -41,5 +41,8 @@ Route::middleware(['token.auth'])->group(function () {
     Route::get('/CreateWishList/{product_id}', [ProductController::class, 'CreateWishList']);
     Route::get('/ProductWishList', [ProductController::class, 'ProductWishList']);
     Route::get('/RemoveWishList/{product_id}', [ProductController::class, 'RemoveWishList']);
-    
+
+    // Cart
+    Route::post('/CreateCartList', [ProductController::class, 'CreateCartList']);
+
 });

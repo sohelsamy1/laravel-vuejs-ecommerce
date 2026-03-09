@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\ResponseHelper;
 use App\Models\Product;
+use App\Models\ProductCart;
 use App\Models\ProductDetails;
 use App\Models\ProductReview;
 use App\Models\ProductSlider;
@@ -57,7 +58,7 @@ class ProductController extends Controller
         return ResponseHelper::Out('success', $data, 200);
     }
 
-    //  Protected: Create Wish
+    // Protected: Create Wish
     public function CreateWishList(Request $request): JsonResponse
     {
         $user_id = (int) $request->input('user_id');
@@ -70,7 +71,7 @@ class ProductController extends Controller
         return ResponseHelper::Out('success', $data, 200);
     }
 
-    //  Protected: Wish List
+    // Protected: Wish List
     public function ProductWishList(Request $request): JsonResponse
     {
         $user_id = (int) $request->input('user_id');
@@ -78,7 +79,7 @@ class ProductController extends Controller
         return ResponseHelper::Out('success', $data, 200);
     }
 
-    //  Protected: Remove Wish
+    // Protected: Remove Wish
     public function RemoveWishList(Request $request): JsonResponse
     {
         $user_id = (int) $request->input('user_id');
@@ -86,6 +87,51 @@ class ProductController extends Controller
             'user_id' => $user_id,
             'product_id' => $request->product_id
         ])->delete();
+
+        return ResponseHelper::Out('success', $data, 200);
+    }
+
+    // Protected: Create Cart
+    public function CreateCartList(Request $request): JsonResponse
+    {
+        $user_id = (int) $request->input('user_id');
+
+        $request->validate([
+            'product_id' => ['required'],
+            'qty' => ['required', 'integer', 'min:1'],
+            'color' => ['nullable', 'string'],
+            'size' => ['nullable', 'string'],
+        ]);
+
+        $product_id = $request->input('product_id');
+        $color = $request->input('color');
+        $size = $request->input('size');
+        $qty = (int) $request->input('qty');
+
+        $productDetails = Product::where('id', $product_id)->first();
+
+        if (!$productDetails) {
+            return ResponseHelper::Out('fail', 'Product not found', 404);
+        }
+
+        // Unit price determine
+        $UnitPrice = ($productDetails->discount == 1)
+            ? (float) $productDetails->discount_price
+            : (float) $productDetails->price;
+
+        $totalPrice = $qty * $UnitPrice;
+
+        $data = ProductCart::updateOrCreate(
+            ['user_id' => $user_id, 'product_id' => $product_id],
+            [
+                'user_id' => $user_id,
+                'product_id' => $product_id,
+                'color' => $color,
+                'size' => $size,
+                'qty' => $qty,
+                'price' => $totalPrice
+            ]
+        );
 
         return ResponseHelper::Out('success', $data, 200);
     }
