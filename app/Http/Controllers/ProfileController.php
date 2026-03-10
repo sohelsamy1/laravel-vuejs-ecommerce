@@ -36,4 +36,19 @@ class ProfileController extends Controller
 
         return ResponseHelper::Out('success', $data, 200);
     }
+
+    public function ReadProfile(Request $request): JsonResponse
+    {
+        $user_id = (int) $request->input('user_id');
+
+        if (!$user_id) {
+            return ResponseHelper::Out('fail', 'Unauthorized: user_id missing', 401);
+        }
+
+        $data = CustomerProfile::where('user_id', $user_id)
+            ->with('user')
+            ->first();
+
+        return ResponseHelper::Out('success', $data, 200);
+    }
 }

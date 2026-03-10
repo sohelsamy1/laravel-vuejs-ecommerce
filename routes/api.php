@@ -40,6 +40,7 @@ Route::middleware(['token.auth'])->group(function () {
 
     // Profile
     Route::post('/CreateProfile', [ProfileController::class, 'CreateProfile']);
+    Route::get('/ReadProfile', [ProfileController::class, 'ReadProfile']);
 
     // Wishlist
     Route::get('/CreateWishList/{product_id}', [ProductController::class, 'CreateWishList']);
