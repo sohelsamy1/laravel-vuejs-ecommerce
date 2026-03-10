@@ -76,7 +76,6 @@ class InvoiceController extends Controller
 
             $invoiceID = $invoice->id;
 
-
             foreach ($cartList as $item) {
                 InvoiceProduct::create([
                     'invoice_id' => $invoiceID,
@@ -86,7 +85,6 @@ class InvoiceController extends Controller
                     'sale_price' => (float) ($item->price ?? 0),
                 ]);
             }
-
 
             $paymentMethod = SSLCommerz::InitiatePayment($profile, $payable, $tran_id, $user_email);
 
@@ -114,4 +112,12 @@ class InvoiceController extends Controller
         }
     }
 
+    public function InvoiceList(Request $request)
+    {
+        $user_id = (int) $request->header('id');
+        if (!$user_id) return ResponseHelper::Out('fail', 'Unauthorized', 401);
+
+        $data = Invoice::where('user_id', $user_id)->latest()->get();
+        return ResponseHelper::Out('success', $data, 200);
+    }
 }
