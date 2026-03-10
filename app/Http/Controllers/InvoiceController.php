@@ -120,4 +120,20 @@ class InvoiceController extends Controller
         $data = Invoice::where('user_id', $user_id)->latest()->get();
         return ResponseHelper::Out('success', $data, 200);
     }
+
+    public function InvoiceProductList(Request $request)
+    {
+        $user_id = (int) $request->header('id');
+        $invoice_id = (int) $request->invoice_id;
+
+        if (!$user_id) return ResponseHelper::Out('fail', 'Unauthorized', 401);
+        if (!$invoice_id) return ResponseHelper::Out('fail', 'Invoice id required', 422);
+
+        $data = InvoiceProduct::where([
+            'user_id' => $user_id,
+            'invoice_id' => $invoice_id
+        ])->with('product')->get();
+
+        return ResponseHelper::Out('success', $data, 200);
+    }
 }
