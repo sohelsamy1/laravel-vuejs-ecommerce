@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -51,5 +52,9 @@ Route::middleware(['token.auth'])->group(function () {
     Route::post('/CreateCartList', [ProductController::class, 'CreateCartList']);
     Route::get('/CartList', [ProductController::class, 'CartList']);
     Route::get('/DeleteCartList/{product_id}', [ProductController::class, 'DeleteCartList']);
+
+    // Invoice
+    Route::get('/InvoiceCreate', [InvoiceController::class, 'InvoiceCreate']);
+    
 
 });
