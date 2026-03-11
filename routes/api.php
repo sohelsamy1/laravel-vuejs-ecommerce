@@ -58,5 +58,6 @@ Route::middleware(['token.auth'])->group(function () {
     Route::get('/InvoiceList', [InvoiceController::class, 'InvoiceList']);
     Route::get('/InvoiceProductList/{invoice_id}', [InvoiceController::class, 'InvoiceProductList']);
 
-
 });
+
+Route::get('/PaymentSuccess', [InvoiceController::class, 'PaymentSuccess']);
