@@ -67,4 +67,10 @@ class SSLCommerz
         }
     }
 
+    public static function InitiateSuccess($tran_id): int
+    {
+        Invoice::where(['tran_id' => $tran_id, 'val_id' => 0])->update(['payment_status' => 'Success']);
+        return 1;
+    }
+
 }
