@@ -73,4 +73,10 @@ class SSLCommerz
         return 1;
     }
 
+    public static function InitiateCancel($tran_id): int
+    {
+        Invoice::where(['tran_id' => $tran_id, 'val_id' => 0])->update(['payment_status' => 'Cancel']);
+        return 1;
+    }
+
 }
