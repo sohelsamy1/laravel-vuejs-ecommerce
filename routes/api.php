@@ -3,6 +3,7 @@
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -27,6 +28,9 @@ Route::get('/ListProductByRemark/{remark}', [ProductController::class, 'ListProd
 Route::get('/ListProductSlider', [ProductController::class, 'ListProductSlider']);
 Route::get('/ProductDetailsById/{id}', [ProductController::class, 'ProductDetailsById']);
 Route::get('/ListReviewByProduct/{product_id}', [ProductController::class, 'ListReviewByProduct']);
+
+// Policy
+Route::get('/PolicyByType/{type}', [PolicyController::class, 'PolicyByType']);
 
 // Auth
 Route::post('/UserLogin', [UserController::class, 'UserLogin']);
