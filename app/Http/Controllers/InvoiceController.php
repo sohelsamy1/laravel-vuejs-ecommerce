@@ -137,10 +137,16 @@ class InvoiceController extends Controller
         return ResponseHelper::Out('success', $data, 200);
     }
 
-
     public function PaymentSuccess(Request $request)
     {
         SSLCommerz::InitiateSuccess($request->query('tran_id'));
         return redirect('/profile');
     }
+
+    public function PaymentCancel(Request $request)
+    {
+        SSLCommerz::InitiateCancel($request->query('tran_id'));
+        return redirect('/profile');
+    }
+
 }
