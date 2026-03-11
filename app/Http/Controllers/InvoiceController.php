@@ -154,5 +154,13 @@ class InvoiceController extends Controller
         SSLCommerz::InitiateFail($request->query('tran_id'));
         return redirect('/profile');
     }
-    
+
+    public function PaymentIPN(Request $request)
+    {
+        return SSLCommerz::InitiateIPN(
+            $request->input('tran_id'),
+            $request->input('status'),
+            $request->input('val_id')
+        );
+    }
 }
