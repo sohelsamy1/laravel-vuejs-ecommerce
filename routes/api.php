@@ -48,17 +48,17 @@ Route::middleware(['token.auth'])->group(function () {
     Route::get('/ReadProfile', [ProfileController::class, 'ReadProfile']);
 
     // Wishlist
-    Route::get('/CreateWishList/{product_id}', [ProductController::class, 'CreateWishList']);
+    Route::POST('/CreateWishList/{product_id}', [ProductController::class, 'CreateWishList']);
     Route::get('/ProductWishList', [ProductController::class, 'ProductWishList']);
-    Route::get('/RemoveWishList/{product_id}', [ProductController::class, 'RemoveWishList']);
+    Route::DELETE('/RemoveWishList/{product_id}', [ProductController::class, 'RemoveWishList']);
 
     // Cart
     Route::post('/CreateCartList', [ProductController::class, 'CreateCartList']);
     Route::get('/CartList', [ProductController::class, 'CartList']);
-    Route::get('/DeleteCartList/{product_id}', [ProductController::class, 'DeleteCartList']);
+    Route::DELETE('/DeleteCartList/{product_id}', [ProductController::class, 'DeleteCartList']);
 
     // Invoice
-    Route::get('/InvoiceCreate', [InvoiceController::class, 'InvoiceCreate']);
+    Route::POST('/InvoiceCreate', [InvoiceController::class, 'InvoiceCreate']);
     Route::get('/InvoiceList', [InvoiceController::class, 'InvoiceList']);
     Route::get('/InvoiceProductList/{invoice_id}', [InvoiceController::class, 'InvoiceProductList']);
 
