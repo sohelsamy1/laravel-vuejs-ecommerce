@@ -154,4 +154,5 @@ class InvoiceController extends Controller
         SSLCommerz::InitiateFail($request->query('tran_id'));
         return redirect('/profile');
     }
+    
 }

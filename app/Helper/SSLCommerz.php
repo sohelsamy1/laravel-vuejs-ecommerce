@@ -79,4 +79,9 @@ class SSLCommerz
         return 1;
     }
 
+    public static function InitiateFail($tran_id): int
+    {
+        Invoice::where(['tran_id' => $tran_id, 'val_id' => 0])->update(['payment_status' => 'Fail']);
+        return 1;
+    }
 }
