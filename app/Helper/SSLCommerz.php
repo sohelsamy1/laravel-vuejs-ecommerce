@@ -84,4 +84,10 @@ class SSLCommerz
         Invoice::where(['tran_id' => $tran_id, 'val_id' => 0])->update(['payment_status' => 'Fail']);
         return 1;
     }
+
+    public static function InitiateIPN($tran_id, $status, $val_id): int
+    {
+        Invoice::where(['tran_id' => $tran_id, 'val_id' => 0])->update(['payment_status' => $status, 'val_id' => $val_id]);
+        return 1;
+    }
 }
