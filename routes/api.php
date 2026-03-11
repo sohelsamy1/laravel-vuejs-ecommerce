@@ -62,3 +62,4 @@ Route::middleware(['token.auth'])->group(function () {
 
 Route::get('/PaymentSuccess', [InvoiceController::class, 'PaymentSuccess']);
 Route::get('/PaymentCancel', [InvoiceController::class, 'PaymentCancel']);
+Route::get('/PaymentFail', [InvoiceController::class, 'PaymentFail']);
